@@ -32,6 +32,7 @@
 			android:theme="@style/LaunchScreenTheme">
 
 			<meta-data android:name="SET_THEME_ON_LAUNCH" android:resource="@style/AppTheme" />
+			<meta-data android:name="com.amap.api.v2.apikey" android:value="609ebe6254ef21379968129059436d94"/>
 
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
