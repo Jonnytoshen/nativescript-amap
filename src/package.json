@@ -47,12 +47,12 @@
     "homepage": "https://github.com/Jonnytoshen/nativescript-amap",
     "readmeFilename": "README.md",
     "devDependencies": {
-        "tns-core-modules": "^3.1.0",
-        "tns-platform-declarations": "^3.1.0",
-        "typescript": "~2.3.0",
         "prompt": "^1.0.0",
         "rimraf": "^2.5.0",
-        "tslint": "^5.0.0"
+        "tns-core-modules": "^3.3.0",
+        "tns-platform-declarations": "^3.1.0",
+        "tslint": "^5.0.0",
+        "typescript": "~2.3.0"
     },
     "dependencies": {},
     "bootstrapper": "nativescript-plugin-seed"

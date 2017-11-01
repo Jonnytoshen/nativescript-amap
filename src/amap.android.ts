@@ -1,5 +1,11 @@
-import { Common } from './amap.common';
+import { AMapViewBase } from './amap.common';
 
-export class Amap extends Common {
+declare const android, com, java, org: any;
 
+export class AMapView extends AMapViewBase {
+
+    public createNativeView(): object {
+        let nativeView = new android.widget.FrameLayout(this._context);
+        return native;
+    }
 }
