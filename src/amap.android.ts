@@ -89,4 +89,8 @@ export class AMapSource extends AMapCommon implements AMap {
         this.uiSettings.setZoomControlsEnabled(enabled);
     }
 
+    isCompassEnabled(): boolean {
+        return this.uiSettings.isCompassEnabled();
+    }
+
 }

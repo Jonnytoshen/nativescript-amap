@@ -14,6 +14,8 @@ export interface AMap {
   setZoomPosition(position: 'ZOOM_POSITION_RIGHT_CENTER'|'ZOOM_POSITION_RIGHT_BUTTOM'): void;
   // 这个方法设置了地图是否允许显示缩放按钮。如果允许，则在地图上显示。默认缩放按钮为显示。
   setZoomControlsEnabled(enabled: boolean): void;
+  // 获取指南针状态 可用/不可用。
+  isCompassEnabled(): boolean;
 }
 
 export interface AMapOnReadyData {
