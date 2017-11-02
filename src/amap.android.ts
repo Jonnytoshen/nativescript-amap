@@ -73,12 +73,16 @@ export class AMapSource extends AMapCommon implements AMap {
         return this.uiSettings.getLogoPosition();
     }
 
-    setLogoPosition(posistion: 'LOGO_POSITION_BOTTOM_CENTER' | 'LOGO_POSITION_BOTTOM_LEFT' | 'LOGO_POSITION_BOTTOM_RIGHT'): void {
-        this.uiSettings.setLogoPosition(com.amap.api.maps2d.AMapOptions[posistion]);
+    setLogoPosition(position: 'LOGO_POSITION_BOTTOM_CENTER' | 'LOGO_POSITION_BOTTOM_LEFT' | 'LOGO_POSITION_BOTTOM_RIGHT'): void {
+        this.uiSettings.setLogoPosition(com.amap.api.maps2d.AMapOptions[position]);
     }
 
     getZoomPosition(): number {
         return this.uiSettings.getZoomPosition();
+    }
+
+    setZoomPosition(position: 'ZOOM_POSITION_RIGHT_CENTER'|'ZOOM_POSITION_RIGHT_BUTTOM'): void {
+        this.uiSettings.setZoomPosition(com.amap.api.maps2d.AMapOptions[position]);
     }
 
 }

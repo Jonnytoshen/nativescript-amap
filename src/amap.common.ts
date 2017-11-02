@@ -10,6 +10,8 @@ export interface AMap {
   setLogoPosition(position: 'LOGO_POSITION_BOTTOM_CENTER' | 'LOGO_POSITION_BOTTOM_LEFT' | 'LOGO_POSITION_BOTTOM_RIGHT'): void;
   // 获取设置的缩放按钮位置
   getZoomPosition(): number;
+  // 设置缩放按钮的位置
+  setZoomPosition(position: 'ZOOM_POSITION_RIGHT_CENTER'|'ZOOM_POSITION_RIGHT_BUTTOM'): void;
 
 }
 
