@@ -1,5 +1,18 @@
 import { View, Property, booleanConverter } from "tns-core-modules/ui/core/view";
 
+export interface AMap {
+  /**
+   * 定义Amap组件可用接口
+   */
+}
+
+export interface AMapOnReadyData {
+  eventName: string;
+  object: AMap;
+  map: AMap;
+  android: any;
+}
+
 export interface AMapViewApi {
 
 }
@@ -38,6 +51,8 @@ zOrderOnTopProperty.register(AMapViewCommonBase);
 
 
 export abstract class AMapViewBase extends AMapViewCommonBase {
+
+    static mapReadyEvent: string = "mapReady";
   
     protected config: any = {};
   

@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { AMap, AMapOnReadyData } from 'nativescript-amap';
 
 @Component({
     selector: "Home",
@@ -11,5 +12,9 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(): void {
+    }
+
+    onMapReady(args: AMapOnReadyData): void {
+        
     }
 }

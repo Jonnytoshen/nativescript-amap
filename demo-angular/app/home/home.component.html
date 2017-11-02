@@ -1,9 +1,9 @@
 <ActionBar class="action-bar">
-    <Label class="action-bar-title" text="AMap with NativeScript"></Label>
+    <Label class="action-bar-title" text="高德地图"></Label>
 </ActionBar>
 
 <GridLayout class="page">
     <ContentView height="100%" width="100%">
-        <AMapView [mapType]="2"></AMapView>
+        <AMapView [mapType]="2" (mapReady)="onMapReady($event)"></AMapView>
     </ContentView>
 </GridLayout>
