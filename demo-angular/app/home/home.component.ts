@@ -16,5 +16,6 @@ export class HomeComponent implements OnInit {
 
     onMapReady(args: AMapOnReadyData): void {
         let map: AMap = args.map;
+        map.setLogoPosition('LOGO_POSITION_BOTTOM_CENTER');
     }
 }
