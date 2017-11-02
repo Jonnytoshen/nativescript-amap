@@ -17,8 +17,12 @@ export class AMapView extends AMapViewBase {
     initMap(): void {
         if(this.mapView) return;
         let mapOptions = new com.amap.api.maps2d.AMapOptions();
-        this.mapView = new com.amap.api.maps2d.MapView(this._context);
+        this.mapView = new com.amap.api.maps2d.MapView(this._context, mapOptions);
         this.mapView.onCreate(null);
         this.nativeView.addView(this.mapView);
+    }
+
+    getMapView(): any {
+        return this.mapView;
     }
 }
