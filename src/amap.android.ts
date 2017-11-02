@@ -93,4 +93,8 @@ export class AMapSource extends AMapCommon implements AMap {
         return this.uiSettings.isCompassEnabled();
     }
 
+    setCompassEnabled(enabled: boolean): void {
+        this.uiSettings.setCompassEnabled(enabled);
+    }
+
 }

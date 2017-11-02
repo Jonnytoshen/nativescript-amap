@@ -16,6 +16,8 @@ export interface AMap {
   setZoomControlsEnabled(enabled: boolean): void;
   // 获取指南针状态 可用/不可用。
   isCompassEnabled(): boolean;
+  // 这个方法设置了地图是否允许显示指南针
+  setCompassEnabled(enabled: boolean): void;
 }
 
 export interface AMapOnReadyData {

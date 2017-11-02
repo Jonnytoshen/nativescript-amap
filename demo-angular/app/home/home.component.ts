@@ -16,6 +16,5 @@ export class HomeComponent implements OnInit {
 
     onMapReady(args: AMapOnReadyData): void {
         let map: AMap = args.map;
-        console.log(map.isCompassEnabled());
     }
 }
