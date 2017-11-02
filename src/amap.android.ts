@@ -101,4 +101,8 @@ export class AMapSource extends AMapCommon implements AMap {
         return this.uiSettings.isMyLocationButtonEnabled();
     }
 
+    setMyLocationButtonEnabled(enabled: boolean): void {
+        this.uiSettings.setMyLocationButtonEnabled(enabled);
+    }
+
 }

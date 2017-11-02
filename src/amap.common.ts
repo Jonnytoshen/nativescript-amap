@@ -20,6 +20,8 @@ export interface AMap {
   setCompassEnabled(enabled: boolean): void;
   // 返回当前地图是否显示了定位按钮
   isMyLocationButtonEnabled(): boolean;
+  // 设置定位按钮是否显示
+  setMyLocationButtonEnabled(enabled: boolean): void;
 }
 
 export interface AMapOnReadyData {
