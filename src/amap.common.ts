@@ -4,11 +4,12 @@ export interface AMap {
   /**
    * 定义Amap组件可用接口
    */
+  getLogoPosition(): number;
 }
 
 export interface AMapOnReadyData {
   eventName: string;
-  object: AMap;
+  object: any;
   map: AMap;
   android: any;
 }
@@ -18,7 +19,7 @@ export interface AMapViewApi {
 }
 
 export abstract class AMapViewCommonBase extends View implements AMapViewApi {
-  
+  protected map: AMap;
 }
 
 // 设置Logo位置
@@ -100,4 +101,9 @@ export abstract class AMapViewBase extends AMapViewCommonBase {
       this.config.zOrderOnTop = value;
     }
   
+  }
+
+  
+  export abstract class AMapCommon {
+    
   }

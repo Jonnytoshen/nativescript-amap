@@ -1,4 +1,4 @@
-import { AMapViewBase, AMapOnReadyData } from './amap.common';
+import { AMap, AMapCommon, AMapViewBase, AMapOnReadyData } from './amap.common';
 
 declare const android, com, java, org: any;
 
@@ -20,11 +20,11 @@ export class AMapView extends AMapViewBase {
         this.mapView = new com.amap.api.maps2d.MapView(this._context, mapOptions);
         this.mapView.onCreate(null);
         this.nativeView.addView(this.mapView);
-        // 绑定事件属性
+        this.map = new AMapSource(this.mapView.getMap());
         this.notify(<AMapOnReadyData>{
             eventName: AMapViewBase.mapReadyEvent,
             object: this,
-            map: this,
+            map: this.map,
             android: this.mapView
         });
     }
@@ -58,4 +58,19 @@ export class AMapView extends AMapViewBase {
     getMapView(): any {
         return this.mapView;
     }
+}
+
+export class AMapSource extends AMapCommon implements AMap {
+    
+    uiSettings: any;
+    
+    constructor(private map: any) {
+        super();
+        this.uiSettings = map.getUiSettings();
+    }
+
+    getLogoPosition(): number {
+        return this.uiSettings.getLogoPosition();
+    }
+
 }
