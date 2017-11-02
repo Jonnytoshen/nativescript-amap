@@ -97,4 +97,8 @@ export class AMapSource extends AMapCommon implements AMap {
         this.uiSettings.setCompassEnabled(enabled);
     }
 
+    isMyLocationButtonEnabled(): boolean {
+        return this.uiSettings.isMyLocationButtonEnabled();
+    }
+
 }

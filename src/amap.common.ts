@@ -18,6 +18,8 @@ export interface AMap {
   isCompassEnabled(): boolean;
   // 这个方法设置了地图是否允许显示指南针
   setCompassEnabled(enabled: boolean): void;
+  // 返回当前地图是否显示了定位按钮
+  isMyLocationButtonEnabled(): boolean;
 }
 
 export interface AMapOnReadyData {
