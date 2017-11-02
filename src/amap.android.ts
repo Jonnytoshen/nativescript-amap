@@ -77,4 +77,8 @@ export class AMapSource extends AMapCommon implements AMap {
         this.uiSettings.setLogoPosition(com.amap.api.maps2d.AMapOptions[posistion]);
     }
 
+    getZoomPosition(): number {
+        return this.uiSettings.getZoomPosition();
+    }
+
 }

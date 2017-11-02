@@ -4,8 +4,13 @@ export interface AMap {
   /**
    * 定义Amap组件可用接口
    */
-  getLogoPosition(): number;                               // 获取“高德地图”Logo的位置
-  setLogoPosition(position: 'LOGO_POSITION_BOTTOM_CENTER' | 'LOGO_POSITION_BOTTOM_LEFT' | 'LOGO_POSITION_BOTTOM_RIGHT'): void;                 // N 设置“高德地图”Logo的位置
+  // 获取“高德地图”Logo的位置
+  getLogoPosition(): number;                               
+  // N 设置“高德地图”Logo的位置
+  setLogoPosition(position: 'LOGO_POSITION_BOTTOM_CENTER' | 'LOGO_POSITION_BOTTOM_LEFT' | 'LOGO_POSITION_BOTTOM_RIGHT'): void;
+  // 获取设置的缩放按钮位置
+  getZoomPosition(): number;
+
 }
 
 export interface AMapOnReadyData {
