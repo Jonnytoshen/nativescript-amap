@@ -12,7 +12,8 @@ export interface AMap {
   getZoomPosition(): number;
   // 设置缩放按钮的位置
   setZoomPosition(position: 'ZOOM_POSITION_RIGHT_CENTER'|'ZOOM_POSITION_RIGHT_BUTTOM'): void;
-
+  // 这个方法设置了地图是否允许显示缩放按钮。如果允许，则在地图上显示。默认缩放按钮为显示。
+  setZoomControlsEnabled(enabled: boolean): void;
 }
 
 export interface AMapOnReadyData {

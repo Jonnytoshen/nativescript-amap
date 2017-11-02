@@ -85,4 +85,8 @@ export class AMapSource extends AMapCommon implements AMap {
         this.uiSettings.setZoomPosition(com.amap.api.maps2d.AMapOptions[position]);
     }
 
+    setZoomControlsEnabled(enabled: boolean): void {
+        this.uiSettings.setZoomControlsEnabled(enabled);
+    }
+
 }
