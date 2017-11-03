@@ -141,4 +141,8 @@ export class UiSettingsAPI implements UiSettings {
         setMyLocationButtonEnabled(enabled: boolean): void {
             this.uiSettings.setMyLocationButtonEnabled(enabled);
         }
+
+        isScaleControlsEnabled(): boolean {
+            return this.uiSettings.isScaleControlsEnabled();
+        }
     }

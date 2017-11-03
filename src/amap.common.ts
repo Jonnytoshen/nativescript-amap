@@ -27,6 +27,8 @@ export interface UiSettings {
   isMyLocationButtonEnabled(): boolean;
   // 设置定位按钮是否显示
   setMyLocationButtonEnabled(enabled: boolean): void;
+  // 返回比例尺功能是否可用
+  isScaleControlsEnabled(): boolean;
 }
 
 export interface AMapOnReadyData {
