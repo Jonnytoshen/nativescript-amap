@@ -35,6 +35,8 @@ export interface UiSettings {
   isZoomControlsEnabled(): boolean;
   // 返回当前地图是否允许通过手势缩放地图
   isZoomGesturesEnabled(): boolean;
+  // 设置当前地图是否支持所有手势
+  setAllGesturesEnabled(enabled: boolean): void;
 }
 
 export interface AMapOnReadyData {
