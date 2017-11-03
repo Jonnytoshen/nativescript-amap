@@ -74,6 +74,11 @@ export class AMapAPI extends AMapCommon implements AMap {
         super();
     }
 
+    /**
+     * getUiSettings
+     * 返回地图的用户界面设置对象。
+     * @returns UiSettings
+     */
     getUiSettings(): UiSettings {
         if(!this._UiSettings) {
             this._UiSettings = new UiSettingsAPI(this._map);
