@@ -31,6 +31,8 @@ export interface UiSettings {
   isScaleControlsEnabled(): boolean;
   // 返回当前地图是否允许通过手势移动地图
   isScrollGesturesEnabled(): boolean;
+  // 返回当前地图是否显示了缩放按钮
+  isZoomControlsEnabled(): boolean;
 }
 
 export interface AMapOnReadyData {
