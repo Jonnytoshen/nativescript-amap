@@ -39,6 +39,8 @@ export interface UiSettings {
   setMyLocationButtonEnabled(enabled: boolean): void;
   // 设置比例尺功能是否可用
   setScaleControlsEnabled(enabled: boolean): void;
+  // 这个方法设置了地图是否允许通过手势来移动
+  setScrollGesturesEnabled(enabled: boolean): void;
 }
 
 export interface AMapOnReadyData {

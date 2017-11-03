@@ -167,5 +167,9 @@ export class UiSettingsAPI implements UiSettings {
             this.uiSettings.setScaleControlsEnabled(enabled);
         }
 
+        setScrollGesturesEnabled(enabled: boolean): void {
+            this.uiSettings.setScrollGesturesEnabled(enabled);
+        }
+
     
     }
