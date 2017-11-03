@@ -5,6 +5,7 @@ export interface AMap {
    * 定义Amap组件可用接口
    */
   getUiSettings(): UiSettings;
+  getMapType(): number;
   
 }
 

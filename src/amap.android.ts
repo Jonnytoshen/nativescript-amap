@@ -86,6 +86,15 @@ export class AMapAPI extends AMapCommon implements AMap {
         return this._UiSettings;
     }
 
+    /**
+     * getMapType
+     * 返回当前的地图显示类型。可以参考MAP_TYPE_NORMAL, MAP_TYPE_SATELLITE。
+     * @returns number
+     */
+    getMapType(): number {
+        return this._map.getMapType();
+    }
+
 
 
 
