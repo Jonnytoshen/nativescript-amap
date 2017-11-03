@@ -153,4 +153,8 @@ export class UiSettingsAPI implements UiSettings {
         isZoomControlsEnabled(): boolean {
             return this.uiSettings.isZoomControlsEnabled();
         }
+
+        isZoomGesturesEnabled(): boolean {
+            return this.uiSettings.isZoomGesturesEnabled();
+        }
     }
