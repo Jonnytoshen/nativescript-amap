@@ -29,6 +29,8 @@ export interface UiSettings {
   setMyLocationButtonEnabled(enabled: boolean): void;
   // 返回比例尺功能是否可用
   isScaleControlsEnabled(): boolean;
+  // 返回当前地图是否允许通过手势移动地图
+  isScrollGesturesEnabled(): boolean;
 }
 
 export interface AMapOnReadyData {

@@ -145,4 +145,8 @@ export class UiSettingsAPI implements UiSettings {
         isScaleControlsEnabled(): boolean {
             return this.uiSettings.isScaleControlsEnabled();
         }
+
+        isScrollGesturesEnabled(): boolean {
+            return this.uiSettings.isScrollGesturesEnabled();
+        }
     }
