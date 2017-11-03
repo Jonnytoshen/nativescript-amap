@@ -110,10 +110,7 @@ export class UiSettingsAPI implements UiSettings {
             return this.uiSettings.getLogoPosition();
         }
     
-        setLogoPosition(position: 'LOGO_POSITION_BOTTOM_CENTER' | 'LOGO_POSITION_BOTTOM_LEFT' | 'LOGO_POSITION_BOTTOM_RIGHT'): void {
-            this.uiSettings.setLogoPosition(com.amap.api.maps2d.AMapOptions[position]);
-        }
-    
+        
         getZoomPosition(): number {
             return this.uiSettings.getZoomPosition();
         }
@@ -130,18 +127,10 @@ export class UiSettingsAPI implements UiSettings {
             return this.uiSettings.isCompassEnabled();
         }
     
-        setCompassEnabled(enabled: boolean): void {
-            this.uiSettings.setCompassEnabled(enabled);
-        }
-    
         isMyLocationButtonEnabled(): boolean {
             return this.uiSettings.isMyLocationButtonEnabled();
         }
     
-        setMyLocationButtonEnabled(enabled: boolean): void {
-            this.uiSettings.setMyLocationButtonEnabled(enabled);
-        }
-
         isScaleControlsEnabled(): boolean {
             return this.uiSettings.isScaleControlsEnabled();
         }
@@ -161,4 +150,22 @@ export class UiSettingsAPI implements UiSettings {
         setAllGesturesEnabled(enabled: boolean): void {
             this.uiSettings.setAllGesturesEnabled(enabled);
         }
+
+        setCompassEnabled(enabled: boolean): void {
+            this.uiSettings.setCompassEnabled(enabled);
+        }
+
+        setLogoPosition(position: 'LOGO_POSITION_BOTTOM_CENTER' | 'LOGO_POSITION_BOTTOM_LEFT' | 'LOGO_POSITION_BOTTOM_RIGHT'): void {
+            this.uiSettings.setLogoPosition(com.amap.api.maps2d.AMapOptions[position]);
+        }
+
+        setMyLocationButtonEnabled(enabled: boolean): void {
+            this.uiSettings.setMyLocationButtonEnabled(enabled);
+        }
+
+        setScaleControlsEnabled(enabled: boolean): void {
+            this.uiSettings.setScaleControlsEnabled(enabled);
+        }
+
+    
     }

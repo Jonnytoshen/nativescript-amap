@@ -11,8 +11,6 @@ export interface AMap {
 export interface UiSettings {
   // 获取“高德地图”Logo的位置
   getLogoPosition(): number;                               
-  // N 设置“高德地图”Logo的位置
-  setLogoPosition(position: 'LOGO_POSITION_BOTTOM_CENTER' | 'LOGO_POSITION_BOTTOM_LEFT' | 'LOGO_POSITION_BOTTOM_RIGHT'): void;
   // 获取设置的缩放按钮位置
   getZoomPosition(): number;
   // 设置缩放按钮的位置
@@ -21,12 +19,8 @@ export interface UiSettings {
   setZoomControlsEnabled(enabled: boolean): void;
   // 获取指南针状态 可用/不可用。
   isCompassEnabled(): boolean;
-  // 这个方法设置了地图是否允许显示指南针
-  setCompassEnabled(enabled: boolean): void;
   // 返回当前地图是否显示了定位按钮
   isMyLocationButtonEnabled(): boolean;
-  // 设置定位按钮是否显示
-  setMyLocationButtonEnabled(enabled: boolean): void;
   // 返回比例尺功能是否可用
   isScaleControlsEnabled(): boolean;
   // 返回当前地图是否允许通过手势移动地图
@@ -37,6 +31,14 @@ export interface UiSettings {
   isZoomGesturesEnabled(): boolean;
   // 设置当前地图是否支持所有手势
   setAllGesturesEnabled(enabled: boolean): void;
+  // 这个方法设置了地图是否允许显示指南针
+  setCompassEnabled(enabled: boolean): void;
+  // N 设置“高德地图”Logo的位置
+  setLogoPosition(position: 'LOGO_POSITION_BOTTOM_CENTER' | 'LOGO_POSITION_BOTTOM_LEFT' | 'LOGO_POSITION_BOTTOM_RIGHT'): void;
+  // 设置定位按钮是否显示
+  setMyLocationButtonEnabled(enabled: boolean): void;
+  // 设置比例尺功能是否可用
+  setScaleControlsEnabled(enabled: boolean): void;
 }
 
 export interface AMapOnReadyData {
