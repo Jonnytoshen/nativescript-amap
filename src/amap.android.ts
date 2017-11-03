@@ -115,10 +115,6 @@ export class UiSettingsAPI implements UiSettings {
             return this.uiSettings.getZoomPosition();
         }
     
-        setZoomPosition(position: 'ZOOM_POSITION_RIGHT_CENTER'|'ZOOM_POSITION_RIGHT_BUTTOM'): void {
-            this.uiSettings.setZoomPosition(com.amap.api.maps2d.AMapOptions[position]);
-        }
-    
         isCompassEnabled(): boolean {
             return this.uiSettings.isCompassEnabled();
         }
@@ -173,6 +169,10 @@ export class UiSettingsAPI implements UiSettings {
 
         setZoomGesturesEnabled(enabled: boolean): void {
             this.uiSettings.setZoomGesturesEnabled(enabled);
+        }
+        
+        setZoomPosition(position: 'ZOOM_POSITION_RIGHT_CENTER'|'ZOOM_POSITION_RIGHT_BUTTOM'): void {
+            this.uiSettings.setZoomPosition(com.amap.api.maps2d.AMapOptions[position]);
         }
 
     

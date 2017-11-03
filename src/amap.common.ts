@@ -13,9 +13,6 @@ export interface UiSettings {
   getLogoPosition(): number;                               
   // 获取设置的缩放按钮位置
   getZoomPosition(): number;
-  // 设置缩放按钮的位置
-  setZoomPosition(position: 'ZOOM_POSITION_RIGHT_CENTER'|'ZOOM_POSITION_RIGHT_BUTTOM'): void;
-  
   // 获取指南针状态 可用/不可用。
   isCompassEnabled(): boolean;
   // 返回当前地图是否显示了定位按钮
@@ -44,6 +41,8 @@ export interface UiSettings {
   setZoomControlsEnabled(enabled: boolean): void;
   // 这个方法设置了地图是否允许通过手势来缩放
   setZoomGesturesEnabled(enabled: boolean): void;
+  // 设置缩放按钮的位置
+  setZoomPosition(position: 'ZOOM_POSITION_RIGHT_CENTER'|'ZOOM_POSITION_RIGHT_BUTTOM'): void;
 }
 
 export interface AMapOnReadyData {
