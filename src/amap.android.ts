@@ -75,6 +75,23 @@ export class AMapAPI extends AMapCommon implements AMap {
     }
 
     /**
+     * clear()
+     * 从地图上删除所有的Marker，Overlay，Polyline 等覆盖物
+     */
+    clear(): void {
+        this._map.clear();
+    }
+
+    /**
+     * getMapType
+     * 返回当前的地图显示类型。可以参考MAP_TYPE_NORMAL, MAP_TYPE_SATELLITE。
+     * @returns number
+     */
+    getMapType(): number {
+        return this._map.getMapType();
+    }
+
+    /**
      * getUiSettings
      * 返回地图的用户界面设置对象。
      * @returns UiSettings
@@ -86,14 +103,7 @@ export class AMapAPI extends AMapCommon implements AMap {
         return this._UiSettings;
     }
 
-    /**
-     * getMapType
-     * 返回当前的地图显示类型。可以参考MAP_TYPE_NORMAL, MAP_TYPE_SATELLITE。
-     * @returns number
-     */
-    getMapType(): number {
-        return this._map.getMapType();
-    }
+    
 
 
 
