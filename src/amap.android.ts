@@ -119,10 +119,6 @@ export class UiSettingsAPI implements UiSettings {
             this.uiSettings.setZoomPosition(com.amap.api.maps2d.AMapOptions[position]);
         }
     
-        setZoomControlsEnabled(enabled: boolean): void {
-            this.uiSettings.setZoomControlsEnabled(enabled);
-        }
-    
         isCompassEnabled(): boolean {
             return this.uiSettings.isCompassEnabled();
         }
@@ -169,6 +165,14 @@ export class UiSettingsAPI implements UiSettings {
 
         setScrollGesturesEnabled(enabled: boolean): void {
             this.uiSettings.setScrollGesturesEnabled(enabled);
+        }
+        
+        setZoomControlsEnabled(enabled: boolean): void {
+            this.uiSettings.setZoomControlsEnabled(enabled);
+        }
+
+        setZoomGesturesEnabled(enabled: boolean): void {
+            this.uiSettings.setZoomGesturesEnabled(enabled);
         }
 
     
