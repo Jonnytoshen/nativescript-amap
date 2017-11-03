@@ -4,6 +4,11 @@ export interface AMap {
   /**
    * 定义Amap组件可用接口
    */
+  getUiSettings(): UiSettings;
+  
+}
+
+export interface UiSettings {
   // 获取“高德地图”Logo的位置
   getLogoPosition(): number;                               
   // N 设置“高德地图”Logo的位置

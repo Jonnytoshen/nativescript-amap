@@ -1,4 +1,4 @@
-import { AMap, AMapCommon, AMapViewBase, AMapOnReadyData } from './amap.common';
+import { AMap, UiSettings, AMapCommon, AMapViewBase, AMapOnReadyData } from './amap.common';
 
 declare const android, com, java, org: any;
 
@@ -20,7 +20,7 @@ export class AMapView extends AMapViewBase {
         this.mapView = new com.amap.api.maps2d.MapView(this._context, mapOptions);
         this.mapView.onCreate(null);
         this.nativeView.addView(this.mapView);
-        this.map = new AMapSource(this.mapView.getMap());
+        this.map = new AMapAPI(this.mapView.getMap());
         this.notify(<AMapOnReadyData>{
             eventName: AMapViewBase.mapReadyEvent,
             object: this,
@@ -60,49 +60,80 @@ export class AMapView extends AMapViewBase {
     }
 }
 
-export class AMapSource extends AMapCommon implements AMap {
+
+/**
+ * AMapAPI
+ * 定义AMap 地图对象的操作方法与接口。
+ * http://a.amap.com/lbs/static/unzip/Android_Map_Doc/index.html
+ */
+export class AMapAPI extends AMapCommon implements AMap {
+
+    private _UiSettings: UiSettings;
     
-    uiSettings: any;
-    
-    constructor(private map: any) {
+    constructor(private _map: any) {
         super();
-        this.uiSettings = map.getUiSettings();
     }
 
-    getLogoPosition(): number {
-        return this.uiSettings.getLogoPosition();
+    getUiSettings(): UiSettings {
+        if(!this._UiSettings) {
+            this._UiSettings = new UiSettingsAPI(this._map);
+        }
+        return this._UiSettings;
     }
 
-    setLogoPosition(position: 'LOGO_POSITION_BOTTOM_CENTER' | 'LOGO_POSITION_BOTTOM_LEFT' | 'LOGO_POSITION_BOTTOM_RIGHT'): void {
-        this.uiSettings.setLogoPosition(com.amap.api.maps2d.AMapOptions[position]);
-    }
 
-    getZoomPosition(): number {
-        return this.uiSettings.getZoomPosition();
-    }
 
-    setZoomPosition(position: 'ZOOM_POSITION_RIGHT_CENTER'|'ZOOM_POSITION_RIGHT_BUTTOM'): void {
-        this.uiSettings.setZoomPosition(com.amap.api.maps2d.AMapOptions[position]);
-    }
 
-    setZoomControlsEnabled(enabled: boolean): void {
-        this.uiSettings.setZoomControlsEnabled(enabled);
-    }
-
-    isCompassEnabled(): boolean {
-        return this.uiSettings.isCompassEnabled();
-    }
-
-    setCompassEnabled(enabled: boolean): void {
-        this.uiSettings.setCompassEnabled(enabled);
-    }
-
-    isMyLocationButtonEnabled(): boolean {
-        return this.uiSettings.isMyLocationButtonEnabled();
-    }
-
-    setMyLocationButtonEnabled(enabled: boolean): void {
-        this.uiSettings.setMyLocationButtonEnabled(enabled);
-    }
+    
 
 }
+
+/**
+ * UiSettingsAPI
+ * 返回地图的用户界面设置对象(UiSettings)
+ * http://a.amap.com/lbs/static/unzip/Android_Map_Doc/index.html
+ */
+export class UiSettingsAPI implements UiSettings {
+    
+        private uiSettings: any;
+    
+        constructor(private map: any) { 
+            this.uiSettings = map.getUiSettings();
+        }
+    
+        getLogoPosition(): number {
+            return this.uiSettings.getLogoPosition();
+        }
+    
+        setLogoPosition(position: 'LOGO_POSITION_BOTTOM_CENTER' | 'LOGO_POSITION_BOTTOM_LEFT' | 'LOGO_POSITION_BOTTOM_RIGHT'): void {
+            this.uiSettings.setLogoPosition(com.amap.api.maps2d.AMapOptions[position]);
+        }
+    
+        getZoomPosition(): number {
+            return this.uiSettings.getZoomPosition();
+        }
+    
+        setZoomPosition(position: 'ZOOM_POSITION_RIGHT_CENTER'|'ZOOM_POSITION_RIGHT_BUTTOM'): void {
+            this.uiSettings.setZoomPosition(com.amap.api.maps2d.AMapOptions[position]);
+        }
+    
+        setZoomControlsEnabled(enabled: boolean): void {
+            this.uiSettings.setZoomControlsEnabled(enabled);
+        }
+    
+        isCompassEnabled(): boolean {
+            return this.uiSettings.isCompassEnabled();
+        }
+    
+        setCompassEnabled(enabled: boolean): void {
+            this.uiSettings.setCompassEnabled(enabled);
+        }
+    
+        isMyLocationButtonEnabled(): boolean {
+            return this.uiSettings.isMyLocationButtonEnabled();
+        }
+    
+        setMyLocationButtonEnabled(enabled: boolean): void {
+            this.uiSettings.setMyLocationButtonEnabled(enabled);
+        }
+    }
