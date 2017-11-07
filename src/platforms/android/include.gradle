@@ -27,7 +27,10 @@ dependencies {
     // EXAMPLE: compile "com.facebook.fresco:fresco:0.9.0+"
 
 	compile fileTree(dir: 'libs', include: ['*.jar'])
-	compile 'com.amap.api:3dmap:latest.integration'
-	compile 'com.amap.api:search:latest.integration'
-	compile 'com.amap.api:location:latest.integration'
+    //3D地图so及jar
+    compile 'com.amap.api:3dmap:latest.integration'
+    //定位功能
+    compile 'com.amap.api:location:latest.integration'
+    //搜索功能
+    compile 'com.amap.api:search:latest.integration'
 }

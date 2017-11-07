@@ -17,7 +17,7 @@ export class AMapView extends AMapViewBase {
     initMap(): void {
         if(this.mapView) return;
         let mapOptions = this.mapOptions();
-        this.mapView = new com.amap.api.maps2d.MapView(this._context, mapOptions);
+        this.mapView = new com.amap.api.maps.MapView(this._context, mapOptions);
         this.mapView.onCreate(null);
         this.nativeView.addView(this.mapView);
         this.map = new AMapAPI(this.mapView.getMap());
@@ -30,7 +30,7 @@ export class AMapView extends AMapViewBase {
     }
 
     mapOptions(): any {
-        let mapOptions = new com.amap.api.maps2d.AMapOptions();
+        let mapOptions = new com.amap.api.maps.AMapOptions();
         if(this.config.logoPosition !== undefined) {
             mapOptions.logoPosition(this.config.logoPosition);
         }
@@ -167,7 +167,7 @@ export class UiSettingsAPI implements UiSettings {
         }
 
         setLogoPosition(position: 'LOGO_POSITION_BOTTOM_CENTER' | 'LOGO_POSITION_BOTTOM_LEFT' | 'LOGO_POSITION_BOTTOM_RIGHT'): void {
-            this.uiSettings.setLogoPosition(com.amap.api.maps2d.AMapOptions[position]);
+            this.uiSettings.setLogoPosition(com.amap.api.maps.AMapOptions[position]);
         }
 
         setMyLocationButtonEnabled(enabled: boolean): void {
@@ -191,7 +191,7 @@ export class UiSettingsAPI implements UiSettings {
         }
         
         setZoomPosition(position: 'ZOOM_POSITION_RIGHT_CENTER'|'ZOOM_POSITION_RIGHT_BUTTOM'): void {
-            this.uiSettings.setZoomPosition(com.amap.api.maps2d.AMapOptions[position]);
+            this.uiSettings.setZoomPosition(com.amap.api.maps.AMapOptions[position]);
         }
 
     
