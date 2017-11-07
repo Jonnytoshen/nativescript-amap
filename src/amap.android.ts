@@ -1,4 +1,13 @@
-import { AMap, UiSettings, AMapCommon, AMapViewBase, AMapOnReadyData } from './amap.common';
+import { 
+    AMap, 
+    UiSettings, 
+    AMapCommon, 
+    AMapViewBase, 
+    AMapOnReadyData,
+    LogoMargin,
+    LogoPosition,
+    ZoomPosition
+} from './amap.common';
 
 declare const android, com, java, org: any;
 
@@ -197,7 +206,7 @@ export class UiSettingsAPI implements UiSettings {
             this.uiSettings.setLogoLeftMargin(pixels);
         }
 
-        setLogoPosition(position: 'LOGO_POSITION_BOTTOM_CENTER' | 'LOGO_POSITION_BOTTOM_LEFT' | 'LOGO_POSITION_BOTTOM_RIGHT'): void {
+        setLogoPosition(position: LogoPosition): void {
             this.uiSettings.setLogoPosition(com.amap.api.maps.AMapOptions[position]);
         }
 
@@ -229,7 +238,7 @@ export class UiSettingsAPI implements UiSettings {
             this.uiSettings.setZoomGesturesEnabled(enabled);
         }
         
-        setZoomPosition(position: 'ZOOM_POSITION_RIGHT_CENTER'|'ZOOM_POSITION_RIGHT_BUTTOM'): void {
+        setZoomPosition(position: ZoomPosition): void {
             this.uiSettings.setZoomPosition(com.amap.api.maps.AMapOptions[position]);
         }
 

@@ -1,5 +1,22 @@
 import { View, Property, booleanConverter } from "tns-core-modules/ui/core/view";
 
+export enum LogoPosition {
+  LOGO_POSITION_BOTTOM_LEFT = 0,
+  LOGO_POSITION_BOTTOM_CENTER = 1,
+  LOGO_POSITION_BOTTOM_RIGHT = 2
+}
+
+export enum LogoMargin {
+  LOGO_MARGIN_LEFT = 0,
+  LOGO_MARGIN_RIGHT = 1,
+  LOGO_MARGIN_BOTTOM = 2
+}
+
+export enum ZoomPosition {
+  ZOOM_POSITION_RIGHT_CENTER = 1,
+  ZOOM_POSITION_RIGHT_BUTTOM = 2
+}
+
 export interface AMap {
   /**
    * 定义Amap组件可用接口
@@ -52,7 +69,7 @@ export interface UiSettings {
   // 设置Logo左边界距离屏幕左侧的边距
   setLogoLeftMargin(pixels: number): void;
   // N 设置“高德地图”Logo的位置
-  setLogoPosition(position: 'LOGO_POSITION_BOTTOM_CENTER' | 'LOGO_POSITION_BOTTOM_LEFT' | 'LOGO_POSITION_BOTTOM_RIGHT'): void;
+  setLogoPosition(position: LogoPosition): void;
   // 设置定位按钮是否显示
   setMyLocationButtonEnabled(enabled: boolean): void;
   // 设置旋转手势是否可用
@@ -68,7 +85,7 @@ export interface UiSettings {
   // 这个方法设置了地图是否允许通过手势来缩放
   setZoomGesturesEnabled(enabled: boolean): void;
   // 设置缩放按钮的位置
-  setZoomPosition(position: 'ZOOM_POSITION_RIGHT_CENTER'|'ZOOM_POSITION_RIGHT_BUTTOM'): void;
+  setZoomPosition(position: ZoomPosition): void;
 }
 
 export interface AMapOnReadyData {
