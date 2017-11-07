@@ -21,12 +21,20 @@ export interface UiSettings {
   getZoomPosition(): number;
   // 获取指南针状态 可用/不可用。
   isCompassEnabled(): boolean;
+  // 返回是否以地图中心点缩放
+  isGestureScaleByMapCenter(): boolean;
+  // 返回室内地图楼层切换控件是否显示。
+  isIndoorSwitchEnabled(): boolean;
   // 返回当前地图是否显示了定位按钮
   isMyLocationButtonEnabled(): boolean;
+  // 返回旋转手势是否可用
+  isRotateGesturesEnabled(): boolean;
   // 返回比例尺功能是否可用
   isScaleControlsEnabled(): boolean;
   // 返回当前地图是否允许通过手势移动地图
   isScrollGesturesEnabled(): boolean;
+  // 返回倾斜手势是否可用
+  isTiltGesturesEnabled(): boolean;
   // 返回当前地图是否显示了缩放按钮
   isZoomControlsEnabled(): boolean;
   // 返回当前地图是否允许通过手势缩放地图
@@ -35,14 +43,26 @@ export interface UiSettings {
   setAllGesturesEnabled(enabled: boolean): void;
   // 这个方法设置了地图是否允许显示指南针
   setCompassEnabled(enabled: boolean): void;
+  // 设置是否以地图中心点缩放
+  setGestureScaleByMapCenter(isGestureScaleByMapCenter: boolean): void;
+  // 设置室内地图楼层切换控件是否可见
+  setIndoorSwitchEnabled(isIndoorSwitchEnabled: boolean): void;
+  // 设置Logo下边界距离屏幕底部的边距
+  setLogoBottomMargin(pixels: number): void;
+  // 设置Logo左边界距离屏幕左侧的边距
+  setLogoLeftMargin(pixels: number): void;
   // N 设置“高德地图”Logo的位置
   setLogoPosition(position: 'LOGO_POSITION_BOTTOM_CENTER' | 'LOGO_POSITION_BOTTOM_LEFT' | 'LOGO_POSITION_BOTTOM_RIGHT'): void;
   // 设置定位按钮是否显示
   setMyLocationButtonEnabled(enabled: boolean): void;
+  // 设置旋转手势是否可用
+  setRotateGesturesEnabled(enabled: boolean): void;
   // 设置比例尺功能是否可用
   setScaleControlsEnabled(enabled: boolean): void;
   // 这个方法设置了地图是否允许通过手势来移动
   setScrollGesturesEnabled(enabled: boolean): void;
+  // 设置倾斜手势是否可用
+  setTiltGesturesEnabled(enabled: boolean): void;
   // 这个方法设置了地图是否允许显示缩放按钮。如果允许，则在地图上显示。默认缩放按钮为显示。
   setZoomControlsEnabled(enabled: boolean): void;
   // 这个方法设置了地图是否允许通过手势来缩放

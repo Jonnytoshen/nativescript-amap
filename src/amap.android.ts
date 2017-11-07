@@ -137,9 +137,21 @@ export class UiSettingsAPI implements UiSettings {
         isCompassEnabled(): boolean {
             return this.uiSettings.isCompassEnabled();
         }
+
+        isGestureScaleByMapCenter(): boolean {
+            return this.uiSettings.isGestureScaleByMapCenter();
+        }
+
+        isIndoorSwitchEnabled(): boolean {
+            return this.uiSettings.isIndoorSwitchEnabled();
+        }
     
         isMyLocationButtonEnabled(): boolean {
             return this.uiSettings.isMyLocationButtonEnabled();
+        }
+
+        isRotateGesturesEnabled(): boolean {
+            return this.uiSettings.isRotateGesturesEnabled();
         }
     
         isScaleControlsEnabled(): boolean {
@@ -148,6 +160,10 @@ export class UiSettingsAPI implements UiSettings {
 
         isScrollGesturesEnabled(): boolean {
             return this.uiSettings.isScrollGesturesEnabled();
+        }
+
+        isTiltGesturesEnabled(): boolean {
+            return this.uiSettings.isTiltGesturesEnabled();
         }
 
         isZoomControlsEnabled(): boolean {
@@ -166,6 +182,21 @@ export class UiSettingsAPI implements UiSettings {
             this.uiSettings.setCompassEnabled(enabled);
         }
 
+        setGestureScaleByMapCenter(isGestureScaleByMapCenter: boolean): void {
+            this.uiSettings.setGestureScaleByMapCenter(isGestureScaleByMapCenter);
+        }
+
+        setIndoorSwitchEnabled(isIndoorSwitchEnabled: boolean): void {
+            this.uiSettings.setIndoorSwitchEnabled(isIndoorSwitchEnabled);
+        }
+
+        setLogoBottomMargin(pixels: number): void {
+            this.uiSettings.setLogoBottomMargin(pixels);
+        }
+        setLogoLeftMargin(pixels: number): void {
+            this.uiSettings.setLogoLeftMargin(pixels);
+        }
+
         setLogoPosition(position: 'LOGO_POSITION_BOTTOM_CENTER' | 'LOGO_POSITION_BOTTOM_LEFT' | 'LOGO_POSITION_BOTTOM_RIGHT'): void {
             this.uiSettings.setLogoPosition(com.amap.api.maps.AMapOptions[position]);
         }
@@ -174,12 +205,20 @@ export class UiSettingsAPI implements UiSettings {
             this.uiSettings.setMyLocationButtonEnabled(enabled);
         }
 
+        setRotateGesturesEnabled(enabled: boolean): void {
+            this.uiSettings.setRotateGesturesEnabled(enabled);
+        }
+
         setScaleControlsEnabled(enabled: boolean): void {
             this.uiSettings.setScaleControlsEnabled(enabled);
         }
 
         setScrollGesturesEnabled(enabled: boolean): void {
             this.uiSettings.setScrollGesturesEnabled(enabled);
+        }
+
+        setTiltGesturesEnabled(enabled: boolean): void {
+            this.uiSettings.setTiltGesturesEnabled(enabled);
         }
         
         setZoomControlsEnabled(enabled: boolean): void {
