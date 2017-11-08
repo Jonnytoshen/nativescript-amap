@@ -18,12 +18,12 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
         this.aMapOptions = new AMapOptionsForAndroid();
         this.aMapOptions.rotateGesturesEnabled(false);
+        this.aMapOptions.mapType(MapType.MAP_TYPE_BUS);
     }
 
     onMapReady(args: AMapOnReadyData): void {
         let map: AMap = args.map;
         let uiSettings: UiSettings = map.getUiSettings();
-        uiSettings.setMyLocationButtonEnabled(true);
         uiSettings.setZoomControlsEnabled(false);
     }
 }

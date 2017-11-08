@@ -62,8 +62,8 @@ export class AMapAPI extends AMapCommon implements AMap {
      * clear()
      * 从地图上删除所有的Marker，Overlay，Polyline 等覆盖物
      */
-    clear(): void {
-        this._map.clear();
+    clear(isKeepMyLocationOverlay: boolean): void {
+        this._map.clear(isKeepMyLocationOverlay);
     }
 
     /**
@@ -211,5 +211,6 @@ export class UiSettingsAPI implements UiSettings {
     }
 }
 
-export { AMapOptionsForAndroid } from './amap.common';
+
+export { AMapOptionsForAndroid, LogoMargin, LogoPosition, ZoomPosition, MapType } from './amap.common';
 

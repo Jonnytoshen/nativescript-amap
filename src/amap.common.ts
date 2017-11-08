@@ -148,8 +148,8 @@ export interface AMap {
    * 定义Amap组件可用接口
    */
 
-  // 从地图上删除所有的Marker，Overlay，Polyline 等覆盖物
-  clear(): void;
+  // 从地图上删除所有的Marker，Overlay，Polyline 等覆盖物，如果isKeepMyLocationOverlay为true，那么myLocationOverlay（内置定位覆盖物）不会被删除
+  clear(isKeepMyLocationOverlay: boolean): void;
   // 返回当前的地图显示类型
   getMapType(): number;
   // 返回地图的用户界面设置对象
