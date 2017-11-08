@@ -6,7 +6,8 @@ import {
     AMapOnReadyData,
     LogoMargin,
     LogoPosition,
-    ZoomPosition
+    ZoomPosition,
+    MapType
 } from './amap.common';
 
 declare const android, com, java, org: any;
@@ -25,7 +26,7 @@ export class AMapView extends AMapViewBase {
 
     initMap(): void {
         if(this.mapView) return;
-        let mapOptions = this.mapOptions();
+        let mapOptions = this.aMapOptions.getAMapOptions();
         this.mapView = new com.amap.api.maps.MapView(this._context, mapOptions);
         this.mapView.onCreate(null);
         this.nativeView.addView(this.mapView);
@@ -36,32 +37,6 @@ export class AMapView extends AMapViewBase {
             map: this.map,
             android: this.mapView
         });
-    }
-
-    mapOptions(): any {
-        let mapOptions = new com.amap.api.maps.AMapOptions();
-        if(this.config.logoPosition !== undefined) {
-            mapOptions.logoPosition(this.config.logoPosition);
-        }
-        if(this.config.mapType !== undefined) {
-            mapOptions.mapType(this.config.mapType);
-        }
-        if(this.config.scaleControlsEnabled !== undefined) {
-            mapOptions.scaleControlsEnabled(this.config.scaleControlsEnabled);
-        }
-        if(this.config.scrollGesturesEnabled !== undefined) {
-            mapOptions.scrollGesturesEnabled(this.config.scrollGesturesEnabled);
-        }
-        if(this.config.zoomControlsEnabled !== undefined) {
-            mapOptions.zoomControlsEnabled(this.config.zoomControlsEnabled);
-        }
-        if(this.config.zoomGesturesEnabled !== undefined) {
-            mapOptions.zoomGesturesEnabled(this.config.zoomGesturesEnabled);
-        }
-        if(this.config.zOrderOnTop !== undefined) {
-            mapOptions.zOrderOnTop(this.config.zOrderOnTop);
-        }
-        return mapOptions;
     }
 
     getMapView(): any {
@@ -112,13 +87,6 @@ export class AMapAPI extends AMapCommon implements AMap {
         return this._UiSettings;
     }
 
-    
-
-
-
-
-    
-
 }
 
 /**
@@ -127,120 +95,121 @@ export class AMapAPI extends AMapCommon implements AMap {
  * http://a.amap.com/lbs/static/unzip/Android_Map_Doc/index.html
  */
 export class UiSettingsAPI implements UiSettings {
-    
-        private uiSettings: any;
-    
-        constructor(private map: any) { 
-            this.uiSettings = map.getUiSettings();
-        }
-    
-        getLogoPosition(): number {
-            return this.uiSettings.getLogoPosition();
-        }
-    
-        
-        getZoomPosition(): number {
-            return this.uiSettings.getZoomPosition();
-        }
-    
-        isCompassEnabled(): boolean {
-            return this.uiSettings.isCompassEnabled();
-        }
 
-        isGestureScaleByMapCenter(): boolean {
-            return this.uiSettings.isGestureScaleByMapCenter();
-        }
+    private uiSettings: any;
 
-        isIndoorSwitchEnabled(): boolean {
-            return this.uiSettings.isIndoorSwitchEnabled();
-        }
-    
-        isMyLocationButtonEnabled(): boolean {
-            return this.uiSettings.isMyLocationButtonEnabled();
-        }
-
-        isRotateGesturesEnabled(): boolean {
-            return this.uiSettings.isRotateGesturesEnabled();
-        }
-    
-        isScaleControlsEnabled(): boolean {
-            return this.uiSettings.isScaleControlsEnabled();
-        }
-
-        isScrollGesturesEnabled(): boolean {
-            return this.uiSettings.isScrollGesturesEnabled();
-        }
-
-        isTiltGesturesEnabled(): boolean {
-            return this.uiSettings.isTiltGesturesEnabled();
-        }
-
-        isZoomControlsEnabled(): boolean {
-            return this.uiSettings.isZoomControlsEnabled();
-        }
-
-        isZoomGesturesEnabled(): boolean {
-            return this.uiSettings.isZoomGesturesEnabled();
-        }
-
-        setAllGesturesEnabled(enabled: boolean): void {
-            this.uiSettings.setAllGesturesEnabled(enabled);
-        }
-
-        setCompassEnabled(enabled: boolean): void {
-            this.uiSettings.setCompassEnabled(enabled);
-        }
-
-        setGestureScaleByMapCenter(isGestureScaleByMapCenter: boolean): void {
-            this.uiSettings.setGestureScaleByMapCenter(isGestureScaleByMapCenter);
-        }
-
-        setIndoorSwitchEnabled(isIndoorSwitchEnabled: boolean): void {
-            this.uiSettings.setIndoorSwitchEnabled(isIndoorSwitchEnabled);
-        }
-
-        setLogoBottomMargin(pixels: number): void {
-            this.uiSettings.setLogoBottomMargin(pixels);
-        }
-        setLogoLeftMargin(pixels: number): void {
-            this.uiSettings.setLogoLeftMargin(pixels);
-        }
-
-        setLogoPosition(position: LogoPosition): void {
-            this.uiSettings.setLogoPosition(com.amap.api.maps.AMapOptions[position]);
-        }
-
-        setMyLocationButtonEnabled(enabled: boolean): void {
-            this.uiSettings.setMyLocationButtonEnabled(enabled);
-        }
-
-        setRotateGesturesEnabled(enabled: boolean): void {
-            this.uiSettings.setRotateGesturesEnabled(enabled);
-        }
-
-        setScaleControlsEnabled(enabled: boolean): void {
-            this.uiSettings.setScaleControlsEnabled(enabled);
-        }
-
-        setScrollGesturesEnabled(enabled: boolean): void {
-            this.uiSettings.setScrollGesturesEnabled(enabled);
-        }
-
-        setTiltGesturesEnabled(enabled: boolean): void {
-            this.uiSettings.setTiltGesturesEnabled(enabled);
-        }
-        
-        setZoomControlsEnabled(enabled: boolean): void {
-            this.uiSettings.setZoomControlsEnabled(enabled);
-        }
-
-        setZoomGesturesEnabled(enabled: boolean): void {
-            this.uiSettings.setZoomGesturesEnabled(enabled);
-        }
-        
-        setZoomPosition(position: ZoomPosition): void {
-            this.uiSettings.setZoomPosition(com.amap.api.maps.AMapOptions[position]);
-        }
-
-    
+    constructor(private map: any) { 
+        this.uiSettings = map.getUiSettings();
     }
+
+    getLogoPosition(): number {
+        return this.uiSettings.getLogoPosition();
+    }
+
+    
+    getZoomPosition(): number {
+        return this.uiSettings.getZoomPosition();
+    }
+
+    isCompassEnabled(): boolean {
+        return this.uiSettings.isCompassEnabled();
+    }
+
+    isGestureScaleByMapCenter(): boolean {
+        return this.uiSettings.isGestureScaleByMapCenter();
+    }
+
+    isIndoorSwitchEnabled(): boolean {
+        return this.uiSettings.isIndoorSwitchEnabled();
+    }
+
+    isMyLocationButtonEnabled(): boolean {
+        return this.uiSettings.isMyLocationButtonEnabled();
+    }
+
+    isRotateGesturesEnabled(): boolean {
+        return this.uiSettings.isRotateGesturesEnabled();
+    }
+
+    isScaleControlsEnabled(): boolean {
+        return this.uiSettings.isScaleControlsEnabled();
+    }
+
+    isScrollGesturesEnabled(): boolean {
+        return this.uiSettings.isScrollGesturesEnabled();
+    }
+
+    isTiltGesturesEnabled(): boolean {
+        return this.uiSettings.isTiltGesturesEnabled();
+    }
+
+    isZoomControlsEnabled(): boolean {
+        return this.uiSettings.isZoomControlsEnabled();
+    }
+
+    isZoomGesturesEnabled(): boolean {
+        return this.uiSettings.isZoomGesturesEnabled();
+    }
+
+    setAllGesturesEnabled(enabled: boolean): void {
+        this.uiSettings.setAllGesturesEnabled(enabled);
+    }
+
+    setCompassEnabled(enabled: boolean): void {
+        this.uiSettings.setCompassEnabled(enabled);
+    }
+
+    setGestureScaleByMapCenter(isGestureScaleByMapCenter: boolean): void {
+        this.uiSettings.setGestureScaleByMapCenter(isGestureScaleByMapCenter);
+    }
+
+    setIndoorSwitchEnabled(isIndoorSwitchEnabled: boolean): void {
+        this.uiSettings.setIndoorSwitchEnabled(isIndoorSwitchEnabled);
+    }
+
+    setLogoBottomMargin(pixels: number): void {
+        this.uiSettings.setLogoBottomMargin(pixels);
+    }
+    setLogoLeftMargin(pixels: number): void {
+        this.uiSettings.setLogoLeftMargin(pixels);
+    }
+
+    setLogoPosition(position: LogoPosition): void {
+        this.uiSettings.setLogoPosition(com.amap.api.maps.AMapOptions[position]);
+    }
+
+    setMyLocationButtonEnabled(enabled: boolean): void {
+        this.uiSettings.setMyLocationButtonEnabled(enabled);
+    }
+
+    setRotateGesturesEnabled(enabled: boolean): void {
+        this.uiSettings.setRotateGesturesEnabled(enabled);
+    }
+
+    setScaleControlsEnabled(enabled: boolean): void {
+        this.uiSettings.setScaleControlsEnabled(enabled);
+    }
+
+    setScrollGesturesEnabled(enabled: boolean): void {
+        this.uiSettings.setScrollGesturesEnabled(enabled);
+    }
+
+    setTiltGesturesEnabled(enabled: boolean): void {
+        this.uiSettings.setTiltGesturesEnabled(enabled);
+    }
+    
+    setZoomControlsEnabled(enabled: boolean): void {
+        this.uiSettings.setZoomControlsEnabled(enabled);
+    }
+
+    setZoomGesturesEnabled(enabled: boolean): void {
+        this.uiSettings.setZoomGesturesEnabled(enabled);
+    }
+    
+    setZoomPosition(position: ZoomPosition): void {
+        this.uiSettings.setZoomPosition(com.amap.api.maps.AMapOptions[position]);
+    }
+}
+
+export { AMapOptionsForAndroid } from './amap.common';
+

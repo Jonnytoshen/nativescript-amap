@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { AMap, AMapOnReadyData } from 'nativescript-amap';
+import { AMap, UiSettings, AMapOnReadyData, AMapOptionsForAndroid, MapType } from 'nativescript-amap';
+
+declare var com;
 
 @Component({
     selector: "Home",
@@ -8,13 +10,20 @@ import { AMap, AMapOnReadyData } from 'nativescript-amap';
 })
 export class HomeComponent implements OnInit {
 
+    aMapOptions: AMapOptionsForAndroid;
+
     constructor() {
     }
 
     ngOnInit(): void {
+        this.aMapOptions = new AMapOptionsForAndroid();
+        this.aMapOptions.rotateGesturesEnabled(false);
     }
 
     onMapReady(args: AMapOnReadyData): void {
         let map: AMap = args.map;
+        let uiSettings: UiSettings = map.getUiSettings();
+        uiSettings.setMyLocationButtonEnabled(true);
+        uiSettings.setZoomControlsEnabled(false);
     }
 }

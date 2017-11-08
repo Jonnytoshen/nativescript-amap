@@ -1,4 +1,5 @@
 import { View, Property, booleanConverter } from "tns-core-modules/ui/core/view";
+declare const android, com, java, org: any;
 
 export enum LogoPosition {
   LOGO_POSITION_BOTTOM_LEFT = 0,
@@ -15,6 +16,131 @@ export enum LogoMargin {
 export enum ZoomPosition {
   ZOOM_POSITION_RIGHT_CENTER = 1,
   ZOOM_POSITION_RIGHT_BUTTOM = 2
+}
+
+export enum MapType {
+  MAP_TYPE_NORMAL = 1,
+  MAP_TYPE_SATELLITE = 2,
+  MAP_TYPE_NIGHT = 3,
+  MAP_TYPE_NAVI = 4,
+  MAP_TYPE_BUS = 5
+}
+
+/**
+ * AMapOptions（for android）
+ * MapView 初始化选项
+ * com.amap.api.maps.AMapOptions
+ */
+export class AMapOptionsForAndroid {
+
+    private _AMapOptions: any;
+
+    getAMapOptions(): any {
+    return this._AMapOptions;
+    }
+
+    constructor() {
+    this._AMapOptions = new com.amap.api.maps.AMapOptions();
+    }
+
+    // 设置指南针是否可用
+    compassEnabled(enabled: boolean): AMapOptionsForAndroid {
+    this._AMapOptions.compassEnabled(enabled);
+    return this;
+    }
+
+    // 返回初始化选项中指南针功能是否可用
+    getCompassEnabled(): boolean {
+    return this._AMapOptions.getCompassEnabled();
+    }
+
+    // 获取初始化选项“高德地图”Logo的位置
+    getLogoPosition(): number {
+    return this._AMapOptions.getLogoPosition();
+    }
+
+    // 返回初始化选项中地图模式
+    getMapType(): number {
+    return this._AMapOptions.getMapType();
+    }
+
+    // 返回初始化选项中地图旋转手势是否可用
+    getRotateGesturesEnabled(): boolean {
+    return this._AMapOptions.getRotateGesturesEnabled();
+    }
+
+    // 返回初始化选项中比例尺功能是否可用
+    getScaleControlsEnabled(): boolean {
+    return this._AMapOptions.getScaleControlsEnabled();
+    }
+
+    // 返回初始化选项中拖动手势是否可用
+    getScrollGesturesEnabled(): boolean {
+    return this._AMapOptions.getScrollGesturesEnabled();
+    }
+
+    // 返回初始化选项中地图倾斜手势（显示3D效果）是否可用
+    getTiltGesturesEnabled(): boolean {
+    return this._AMapOptions.getTiltGesturesEnabled();
+    }
+
+    // 返回初始化选项中地图是否允许缩放
+    getZoomControlsEnabled(): boolean {
+    return this._AMapOptions.getZoomControlsEnabled();
+    }
+
+    // 返回初始化选项中缩放手势是否可用
+    getZoomGesturesEnabled(): boolean {
+    return this._AMapOptions.getZoomGesturesEnabled();
+    }
+
+    // 设置“高德地图”Logo的位置
+    logoPosition(position: LogoPosition): AMapOptionsForAndroid {
+    this._AMapOptions.logoPosition(position);
+    return this;
+    }
+
+    // 设置地图模式，默认普通地图
+    mapType(mapType: MapType): AMapOptionsForAndroid {
+    this._AMapOptions.mapType(mapType);
+    return this;
+    }
+
+    // 设置地图是否可以通过手势进行旋转
+    rotateGesturesEnabled(enabled: boolean): AMapOptionsForAndroid {
+    this._AMapOptions.rotateGesturesEnabled(enabled);
+    return this;
+    }
+
+    // 设置地图是否显示比例尺，默认为false
+    scaleControlsEnabled(enabled: boolean): AMapOptionsForAndroid {
+    this._AMapOptions.scaleControlsEnabled(enabled);
+    return this;
+    }
+
+    // 设置地图是否可以通过手势滑动
+    scrollGesturesEnabled(enabled: boolean): AMapOptionsForAndroid {
+    this._AMapOptions.scrollGesturesEnabled(enabled);
+    return this;
+    }
+
+    // 设置地图是否可以通过手势倾斜（3D效果），默认为true
+    tiltGesturesEnabled(enabled: boolean): AMapOptionsForAndroid {
+    this._AMapOptions.tiltGesturesEnabled(enabled);
+    return this;
+    }
+
+    // 设置地图是否允许缩放
+    zoomControlsEnabled(enabled: boolean): AMapOptionsForAndroid {
+    this._AMapOptions.zoomControlsEnabled(enabled);
+    return this;
+    }
+
+    // 设置地图是否可以通过手势进行缩放
+    zoomGesturesEnabled(enabled: boolean): AMapOptionsForAndroid {
+    this._AMapOptions.zoomGesturesEnabled(enabled);
+    return this;
+    }
 }
 
 export interface AMap {
@@ -99,92 +225,45 @@ export interface AMapViewApi {
 
 }
 
+
 export abstract class AMapViewCommonBase extends View implements AMapViewApi {
   protected map: AMap;
 }
 
-// 设置Logo位置
-export const logoPositionProperty = new Property<AMapViewCommonBase, number>({ name: "logoPosition" });
-logoPositionProperty.register(AMapViewCommonBase);
-
-// 设置一个地图显示类型以改变初始的类型。
-export const mapTypeProperty = new Property<AMapViewCommonBase, number>({ name: "mapType" });
-mapTypeProperty.register(AMapViewCommonBase);
-
-// 设置比例尺功能是否可用
-export const scaleControlsEnabledProperty = new Property<AMapViewCommonBase, boolean>({ name: "	scaleControlsEnabled" });
-scaleControlsEnabledProperty.register(AMapViewCommonBase);
-
-// 设置指南针是否可用。
-export const scrollGesturesEnabledProperty = new Property<AMapViewCommonBase, boolean>({ name: "scrollGesturesEnabled" });
-scrollGesturesEnabledProperty.register(AMapViewCommonBase);
-
-// 设置地图是否允许缩放。
-export const zoomControlsEnabledProperty = new Property<AMapViewCommonBase, boolean>({ name: "zoomControlsEnabled" });
-zoomControlsEnabledProperty.register(AMapViewCommonBase);
-
-// 设置地图是否可以通过手势进行缩放。
-export const zoomGesturesEnabledProperty = new Property<AMapViewCommonBase, boolean>({ name: "zoomGesturesEnabled" });
-zoomGesturesEnabledProperty.register(AMapViewCommonBase);
-
-// 设置Z轴排序是否被允许。
-export const 	zOrderOnTopProperty = new Property<AMapViewCommonBase, boolean>({ name: "zOrderOnTop" });
-zOrderOnTopProperty.register(AMapViewCommonBase);
+// MapView 初始化选项
+export const aMapOptionsProperty = new Property<AMapViewCommonBase, AMapOptionsForAndroid>({ name: "aMapOptions" });
+aMapOptionsProperty.register(AMapViewCommonBase);
 
 
 export abstract class AMapViewBase extends AMapViewCommonBase {
 
-    static mapReadyEvent: string = "mapReady";
-  
-    protected config: any = {};
-  
-    get ios(): any {
-      return this.nativeView;
-    }
-  
-    set ios(value) {
-      this.nativeView = value;
-    }
-  
-    get android(): any {
-      return this.nativeView;
-    }
-  
-    set android(value) {
-      this.nativeView = value;
-    }
+  static mapReadyEvent: string = "mapReady";
 
-    [logoPositionProperty.setNative](value: number) {
-      this.config.logoPosition = value;
-    }
+  protected aMapOptions: AMapOptionsForAndroid;
 
-    [mapTypeProperty.setNative](value: number) {
-      this.config.mapType = value;
-    }
-
-    [scaleControlsEnabledProperty.setNative](value: boolean) {
-      this.config.scaleControlsEnabled = value;
-    }
-
-    [scrollGesturesEnabledProperty.setNative](value: boolean) {
-      this.config.scrollGesturesEnabled = value;
-    }
-
-    [zoomControlsEnabledProperty.setNative](value: boolean) {
-      this.config.zoomControlsEnabled = value;
-    }
-
-    [zoomGesturesEnabledProperty.setNative](value: boolean) {
-      this.config.zoomGesturesEnabled = value;
-    }
-
-    [zOrderOnTopProperty.setNative](value: boolean) {
-      this.config.zOrderOnTop = value;
-    }
-  
+  get ios(): any {
+    return this.nativeView;
   }
 
-  
-  export abstract class AMapCommon {
-    
+  set ios(value) {
+    this.nativeView = value;
   }
+
+  get android(): any {
+    return this.nativeView;
+  }
+
+  set android(value) {
+    this.nativeView = value;
+  }
+
+  [aMapOptionsProperty.setNative](value: AMapOptionsForAndroid) {
+    this.aMapOptions = value;
+  }
+
+}
+
+  
+export abstract class AMapCommon {
+  
+}

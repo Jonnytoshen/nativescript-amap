@@ -3,7 +3,7 @@
 </ActionBar>
 
 <GridLayout class="page">
-    <ContentView height="100%" width="100%">
-        <AMapView [mapType]="2" (mapReady)="onMapReady($event)"></AMapView>
+    <ContentView height="100%" width="100%" *ngIf="aMapOptions">
+        <AMapView [aMapOptions]="aMapOptions" (mapReady)="onMapReady($event)"></AMapView>
     </ContentView>
 </GridLayout>
